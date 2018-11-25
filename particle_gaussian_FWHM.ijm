@@ -5,8 +5,7 @@ fname = getInfo("image.filename");
 
 run("Set Measurements...", "area center integrated nan redirect=None decimal=3");
 setAutoThreshold("Default dark no-reset");
-run("Analyze Particles...", "  circularity=0.01-1.00 show=Overlay display exclude clear include add");
-
+run("Analyze Particles...", "size=9-Infinity pixel circularity=0.01-1.00 show=Overlay display exclude clear include add");
 trash = nResults
 
 index = newArray(trash);
@@ -18,6 +17,8 @@ fwhm_d = newArray(trash);
 rsq_h = newArray(trash);
 rsq_v = newArray(trash);
 rsq_d = newArray(trash);
+
+// dat = newImage("mau", "16-bit", trash, (2*plen)+1,3);
 
 for (pindex = 0; pindex < trash; pindex++) {
 particle = pindex+1;
@@ -76,6 +77,7 @@ Fit.doFit("Gaussian", linx, profile);
 //Fit.plot; 
 fwhm_d[pindex] = 2.355 * Fit.p(3);
 rsq_d[pindex] = Fit.rSquared;
+Fit.logResults
 }
 
 // Display results
