@@ -18,7 +18,7 @@ rsq_h = newArray(trash);
 rsq_v = newArray(trash);
 rsq_d = newArray(trash);
 
-// dat = newImage("mau", "16-bit", trash, (2*plen)+1,3);
+// dat = newImage("mau", "16-bit", trash, (2*plen)+1,3); // for storing profile data
 
 for (pindex = 0; pindex < trash; pindex++) {
 particle = pindex+1;
