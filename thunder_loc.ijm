@@ -1,4 +1,4 @@
-print("\\Clear")
+run("Clear Results");
 
 // somehow go to  a window
 
@@ -36,9 +36,8 @@ run("Table... ", "open=D:/imagej_dont_delete/test.csv");
 // import x and y in arrays
 
 
-
  plen = 10; // LineProfile length
-ex = 1.3;
+ ex = 1.3;
 
  trash = Table.size;
 
@@ -53,7 +52,6 @@ rsq_v = newArray(trash);
 rsq_d = newArray(trash);
 
 fw = newArray(trash);
-npix = newArray(trash);
 
 calc_int = newArray(trash);
 
@@ -82,9 +80,15 @@ makeRectangle(cx-fwt, cy-fwt, radt , radt);
 run("Add Selection...");
 
 area = getResult("Area", pindex);
-//npix[pindex] = area;
+int = getResult("IntDen", pindex);
+
 Table.set("N_pix", pindex, area,"test.csv");
+Table.set("Intensity",pindex, int, "test.csv");
+Table.set("Int/pix", pindex,int/area,"test.csv");
+
 Table.update;
+
+
 // Horizontal
 selectImage(original);
 
